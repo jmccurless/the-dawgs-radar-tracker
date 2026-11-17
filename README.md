@@ -7,8 +7,8 @@
 
 ## 1. Project Overview
 This project implements an offline, real-time spatial tracking and classification pipeline on a **Raspberry Pi 5** using a **24GHz mmWave Radar Sensor (HLK-LD2450)**. The system tracks multi-target trajectories via UART telemetry and uses a lightweight neural network to:
-1. Differentiate between human occupants and household pets.
-2. Detect sudden human falls and trigger an appropriate local alert/display response.
+1. Differentiate between human occupants by height, walking, running, falling, and crawling.
+2. Possible applications: fire and rescue, police situations, security operations.
 
 ---
 
@@ -43,6 +43,7 @@ i2cdetect -y 1
 ```
 ### AI Runtime & Model Deployment Evolution
 * Installed Ollama for local model execution, then deleted it and moved to Homebrew and llama.cpp
-* Transitioned to from general liquid Foundation Models (LFMs) to a Closed-Form Continuous-Time (CfC) neural network implemeted in PyTorch
-(We decided to move to CfC model becasue it reduced RAM usage and inference latency on the Pi5 because it cut down on unnecassary LFM uses)
-* Worked with Aaron to run the first base training set so the Cfc could distinguish from (no movment, 1 person, and 2 people)
+* Transitioned to from general liquid Foundation Models (LFMs) to a Closed-Form Continuous-Time (CfC) neural network implemented in PyTorch
+(We decided to move to the CfC model because it reduced RAM usage and inference latency on the Pi5 because it cut down on unnecessary LFM uses)
+* Worked with Aaron to run the first base training set so the CfC could distinguish (no movement, 1 person, and 2 people)
+* 
