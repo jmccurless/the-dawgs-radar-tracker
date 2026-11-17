@@ -41,9 +41,24 @@ sudo apt update
 sudo apt install i2c-tools
 i2cdetect -y 1
 ```
-### AI Runtime & Model Deployment Evolution
-* Installed Ollama for local model execution, then deleted it and moved to Homebrew and llama.cpp
-* Transitioned to from general liquid Foundation Models (LFMs) to a Closed-Form Continuous-Time (CfC) neural network implemented in PyTorch
-(We decided to move to the CfC model because it reduced RAM usage and inference latency on the Pi5 because it cut down on unnecessary LFM uses)
-* Worked with Aaron to run the first base training set so the CfC could distinguish (no movement, 1 person, and 2 people)
-* 
+
+  ### AI Runtime, Model Deployment & Troubleshooting
+
+**Pre-First Meeting Preparations**
+* Discussed initial project ideas and finalized our hardware requirements.
+* Sourced and ordered the HLK-LD2450 24GHz mmWave sensor on amazon.
+* Uriah Researched the required GPIO pinouts and cabling to properly interface the sensor with the Raspberry Pi.
+
+**First Group Meeting (10/24)**
+* Verified the physical connectivity between the sensor and the Pi.
+* Utilized Gemini to generate an initial Python script to test and establish the connection.
+* Created a follow up script to parse the raw hexadecimal output from the sensor into human-readable data.
+* Iterated through four different versions of the parsing script until the data output was concise, clean, and easy to read.
+
+**Second Group Meeting (11/3)**
+* Fully wired the sensor to the Raspberry Pi 5.
+* Experimented with local AI runtimes: initially installed Ollama, but uninstalled it due to high overhead and switched to Homebrew and llama.cpp.
+* Switched from general Liquid Foundation Models (LFMs) to a PyTorch-based Closed-Form Continuous-Time (CfC) neural network. This shift significantly reduced RAM usage and inference latency on the Pi 5.
+* Ran our first AI inference script and tweaked the code so the object's tracked location would be clearly presentable for our demo for humans to read
+* Ran one version of the training data script. Found a problem and actually collected 0 data. Turned out the sensor connections to the PI had been messed up
+* Worked with Aaron to capture the initial baseline training data, allowing the CfC model to accurately distinguish between different states like **no movement** and **1 person**.
